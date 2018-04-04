@@ -32,6 +32,8 @@ namespace MySql_Image
             services.AddDbContext<ProductImageDbContext>(options =>
             options.UseMySql(_dbconnect));
 
+            services.AddTransient<ProductImageSeeder>();
+
             services.AddMvc();
         }
 
@@ -41,6 +43,13 @@ namespace MySql_Image
             if (_env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
+                    seeder.Seed();
+
+                }
             }
 
             app.UseMvc();

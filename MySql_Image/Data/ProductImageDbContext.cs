@@ -15,22 +15,5 @@ namespace MySql_Image.Data
         }
 
         public DbSet<ProductImage> ProductImages { get; set; }
-
-     /*
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<ProductImage>().HasKey(m => m.Id);
-
-            //TODO: UpdateTimestamp code
-             
-            // shadow properties
-            builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");
-            builder.Entity<SourceInfo>().Property<DateTime>("UpdatedTimestamp");
-            
-            base.OnModelCreating(builder);
-        }
-     */
-   
-       
     }
 }
