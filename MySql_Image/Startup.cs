@@ -52,7 +52,12 @@ namespace MySql_Image
                 }
             }
 
-            app.UseMvc();
+            app.UseMvc(route =>
+            {
+                route.MapRoute("Default",
+                "{controller}/{action}/{id?}",
+                new { controller = "AdminProdImages", Action = "Index" });
+            });
         }
     }
 }

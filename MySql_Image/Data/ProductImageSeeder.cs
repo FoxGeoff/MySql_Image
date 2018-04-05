@@ -40,7 +40,7 @@ namespace MySql_Image.Data
          * to match the legasy data
          */
          
-         public IEnumerable<ProductImage> ConvertImagesBase64ToBinary(IEnumerable<ProductImage> productImages)
+        public IEnumerable<ProductImage> ConvertImagesBase64ToBinary(IEnumerable<ProductImage> productImages)
         {
             foreach (var product in productImages)
             {

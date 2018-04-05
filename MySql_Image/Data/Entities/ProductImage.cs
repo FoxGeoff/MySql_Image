@@ -18,5 +18,18 @@ namespace MySql_Image.Data.Entities
         public byte[] ImageThumb { get; set; }
         [MaxLength(150000)]
         public byte[] ImageFull { get; set; }
+
+        public string GetImageThumb()
+        { var base64 = Convert.ToBase64String(ImageThumb);
+
+            return String.Format("data:image/gif;base64,{0}", base64);
+        }
+
+        public string GetImageFull()
+        {
+            var base64 = Convert.ToBase64String(ImageFull);
+
+            return String.Format("data:image/gif;base64,{0}", base64);
+        }
     }
 }

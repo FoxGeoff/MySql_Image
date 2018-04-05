@@ -59,6 +59,11 @@ https://stackoverflow.com/questions/1266223/retrieving-an-image-from-database-wi
 Display Image from database in ASP.Net MVC (curent method):
 https://www.aspsnippets.com/Articles/Display-Image-from-database-in-ASPNet-MVC.aspx
 
+MVC How to display a byte array image from model:
+https://stackoverflow.com/questions/17952514/mvc-how-to-display-a-byte-array-image-from-model
+
+ASP.NET MVC - Displaying Images using Custom Html Helper Method (TODO):
+http://www.devcurry.com/2012/10/aspnet-mvc-displaying-images-using.html
 =====================
 
 
