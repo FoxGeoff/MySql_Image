@@ -43,21 +43,29 @@ namespace MySql_Image
             if (_env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
-                    seeder.Seed();
-
-                }
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStaticFiles();
 
             app.UseMvc(route =>
             {
                 route.MapRoute("Default",
                 "{controller}/{action}/{id?}",
-                new { controller = "AdminProdImages", Action = "Index" });
+                new { controller = "App", Action = "Index" });
             });
+
+            if (_env.IsDevelopment())
+            {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
+                    seeder.Seed();
+                }
+            }
         }
     }
 }
