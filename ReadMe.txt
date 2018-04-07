@@ -65,6 +65,18 @@ https://stackoverflow.com/questions/17952514/mvc-how-to-display-a-byte-array-ima
 ASP.NET MVC - Displaying Images using Custom Html Helper Method (TODO):
 http://www.devcurry.com/2012/10/aspnet-mvc-displaying-images-using.html
 =====================
+TODO
+=====================
+Add Swager
+Add Logging
+Add.Email
+Add save to Excel
+Add Angular front end (BIG)
+Add Product table
+Product API by 3 ways
+Table paging and paginating
+=====================
+
 
 
 

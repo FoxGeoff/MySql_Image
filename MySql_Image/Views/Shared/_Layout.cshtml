@@ -4,28 +4,41 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
-    <title>@ViewBag.Title</title>    
+    <link href="~/css/NavMenu.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
 </head>
 <body>
-    <menu>
-        <ul>
-            <li><a asp-controller="App" asp-action="Index">Home</a></li>
-            <li><a asp-controller="App" asp-action="About">About</a></li>
-            <li><a asp-controller="App" asp-action="Contact">Contact Us</a></li>
-        </ul>
-    </menu>
-    <header>
-        <h1>Audio Impact Test Alpha V1.0</h1>
-    </header>
-    <section>
-        <h2>@ViewBag.Title</h2>
-        @RenderBody()
-    </section>
-    <footer>(c) 2018 fox-graphics.com</footer>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-2' style="background-color:black">
+                <div class="navbar "style="color:white">
+                    <a class="navbar-brand">Audio Impact</a>
+                </div>
+            </div>
+            <div class='col-sm-10 body-content'>
+                <menu>
+                    <ul>
+                        <li><a asp-controller="App" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="App" asp-action="About">About</a></li>
+                        <li><a asp-controller="App" asp-action="Contact">Contact Us</a></li>
+                    </ul>
+                </menu>
+                <header>
+                    <h1>Test Alpha V1.0</h1>
+                </header>
+                <section>
+                    <h2>@ViewBag.Title</h2>
+                    @RenderBody()
+                </section>
+                <footer>(c) 2018 fox-graphics.com</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/index.js"></script>
-    @RenderSection("scripts", false)
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+                <script src="~/js/index.js"></script>
+                @RenderSection("scripts", false)
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
