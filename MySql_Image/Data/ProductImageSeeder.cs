@@ -25,11 +25,20 @@ namespace MySql_Image.Data
         {
             if (!_context.ProductImages.Any())
             {
-                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_images_mod.json"); // 
+                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_images_mod.json");
                 var json = File.ReadAllText(filepath);
                 var productImages = JsonConvert.DeserializeObject<IEnumerable<ProductImage>>(json);
                 productImages = ConvertImagesBase64ToBinary(productImages);
                 _context.ProductImages.AddRange(productImages);
+                _context.SaveChanges();
+            }
+
+            if (!_context.Products.Any())
+            {
+                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_mod.json");
+                var json = File.ReadAllText(filepath);
+                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+                _context.Products.AddRange(products);
                 _context.SaveChanges();
             }
         }
@@ -39,7 +48,7 @@ namespace MySql_Image.Data
          * the database as a binary image and not text
          * to match the legasy data
          */
-         
+
         public IEnumerable<ProductImage> ConvertImagesBase64ToBinary(IEnumerable<ProductImage> productImages)
         {
             foreach (var product in productImages)

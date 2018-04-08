@@ -11,9 +11,10 @@ using System;
 namespace MySql_Image.Migrations
 {
     [DbContext(typeof(ProductImageDbContext))]
-    partial class ProductImageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180408005202_ProductDb")]
+    partial class ProductDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
