@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,8 @@ namespace MySql_Image.Data.Entities
     public class Product
     {
         public uint Id { get; set; }
-        public byte IsDiscontinued { get; set; }
+        [Column ("IsDiscontinued")]
+        public byte Discontinued { get; set; }
         public uint? AssociatedCategoryId { get; set; }
         public uint? AssociatedSnapshotTypeId { get; set; }
         public uint? AssociatedGroupId { get; set; }
