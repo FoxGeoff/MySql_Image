@@ -20,13 +20,20 @@ namespace MySql_Image.Controllers
         }
 
         // GET: AppProducts?sortOrder=cost_desc
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewData["AiPartNumberSortParm"] = String.IsNullOrEmpty(sortOrder) ? "num_desc" : "";
             ViewData["CostSortParm"] = sortOrder == "cost" ? "cost_desc" : "cost";
             ViewData["ManufactureNameSortParm"] = sortOrder == "manufact" ? "manufact_desc" : "manufact";
+            ViewData["CurrentFilter"] = searchString;
 
             var products = from p in _context.Products select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.ProductDescription.Contains(searchString)
+                                       || s.ManufactureName .Contains(searchString));
+            }
 
             switch (sortOrder)
             {
