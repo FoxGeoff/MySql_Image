@@ -10,174 +10,61 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Discontinued)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedCategoryId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedSnapshotTypeId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedGroupId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedScreenId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedImageId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedRecycleId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MerchantNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AiPartNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ManufactureNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ManufactureName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MfgUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MfgManualUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedPrimaryVendorId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedSecondaryVendorId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssociatedTertiaryVendorId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Retail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cost)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AdditionalCost)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DefaultPriority)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsTaxable)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsRecycleFee)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ItemsAssociated)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsExcludedDesAinumOverrwrite)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CostVerificationBy)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AiPartNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufactureNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufactureName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryVendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Retail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discontinued)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedCategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedSnapshotTypeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedGroupId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedScreenId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedImageId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedRecycleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MerchantNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AiPartNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManufactureNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManufactureName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MfgUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MfgManualUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedPrimaryVendorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedSecondaryVendorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssociatedTertiaryVendorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Retail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdditionalCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DefaultPriority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsTaxable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsRecycleFee)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemsAssociated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsExcludedDesAinumOverrwrite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CostVerificationBy)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AiPartNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufactureNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufactureName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrimaryVendor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Retail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"class="btn-sm btn-outline-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-sm btn-outline-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

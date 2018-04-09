@@ -2,6 +2,13 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+
 input[type=submit] {
   width: auto;
 }

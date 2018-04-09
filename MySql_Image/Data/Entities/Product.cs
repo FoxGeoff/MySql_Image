@@ -11,12 +11,18 @@ namespace MySql_Image.Data.Entities
         public uint Id { get; set; }
         [Column ("IsDiscontinued")]
         public byte Discontinued { get; set; }
-        public uint? AssociatedCategoryId { get; set; }
-        public uint? AssociatedSnapshotTypeId { get; set; }
-        public uint? AssociatedGroupId { get; set; }
-        public uint? AssociatedScreenId { get; set; }
-        public uint? AssociatedImageId { get; set; }
-        public uint? AssociatedRecycleId { get; set; }
+        [Column("AssociatedCategoryId")]
+        public uint? Category { get; set; }
+        [Column("AssociatedSnapshotTypeId")]
+        public uint? Snapshot { get; set; }
+        [Column("AssociatedGroupId")]
+        public uint? Group { get; set; }
+        [Column("AssociatedScreenId")]
+        public uint? Screen { get; set; }
+        [Column("AssociatedScreenId")]
+        public uint? Image { get; set; }
+        [Column("AssociatedRecycleId")]
+        public uint? RecycleNumber { get; set; }
         public string MerchantNumber { get; set; }
         public string ProductDescription { get; set; }
         public string AiPartNumber { get; set; }
@@ -24,17 +30,24 @@ namespace MySql_Image.Data.Entities
         public string ManufactureName { get; set; }
         public string MfgUrl { get; set; }
         public string MfgManualUrl { get; set; }
-        public uint? AssociatedPrimaryVendorId { get; set; }
-        public uint? AssociatedSecondaryVendorId { get; set; }
-        public uint? AssociatedTertiaryVendorId { get; set; }
+        [Column("AssociatedPrimaryVendorId")]
+        public uint? PrimaryVendor { get; set; }
+        [Column("AssociatedSecondaryVendorId")]
+        public uint? SecondaryVendor { get; set; }
+        [Column("AssociatedTertiaryVendorId")]
+        public uint? TertiaryVendor { get; set; }
         public double? Retail { get; set; }
         public double? Cost { get; set; }
         public byte AdditionalCost { get; set; }
         public double? DefaultPriority { get; set; }
-        public byte? IsTaxable { get; set; }
-        public byte IsRecycleFee { get; set; }
+        [Column("IsTaxable")]
+        public byte? Taxable { get; set; }
+        [Column("IsRecycleFee")]
+        public byte RecycleFee { get; set; }
         public string ItemsAssociated { get; set; }
-        public sbyte IsExcludedDesAinumOverrwrite { get; set; }
-        public int CostVerificationBy { get; set; }
+        [Column("IsExcludedDesAinumOverrwrite")]
+        public sbyte ExcludedDesAiNum { get; set; }
+        [Column("CostVerificationBy")]
+        public int CostVerification { get; set; }
     }
 }
