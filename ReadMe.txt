@@ -72,9 +72,9 @@ Add Logging
 Add.Email
 Add save to Excel
 Add Angular front end (BIG)
-Add Product table
-Product API by 3 ways
-Table paging and paginating
+Add Product table				DONE 4/8/18
+Product API filter by 3 ways
+Table paging and paginating		WIP
 =====================
 
 

@@ -19,10 +19,37 @@ namespace MySql_Image.Controllers
             _context = context;
         }
 
-        // GET: AppProducts
-        public async Task<IActionResult> Index()
+        // GET: AppProducts?sortOrder=cost_desc
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.Products.ToListAsync());
+            ViewData["AiPartNumberSortParm"] = String.IsNullOrEmpty(sortOrder) ? "num_desc" : "";
+            ViewData["CostSortParm"] = sortOrder == "cost" ? "cost_desc" : "cost";
+            ViewData["ManufactureNameSortParm"] = sortOrder == "manufact" ? "manufact_desc" : "manufact";
+
+            var products = from p in _context.Products select p;
+
+            switch (sortOrder)
+            {
+                case "num_desc":
+                    products = products.OrderByDescending(s => s.AiPartNumber);
+                    break;
+                case "cost":
+                    products = products.OrderBy(s => s.Cost);
+                    break;
+                case "cost_desc":
+                    products = products.OrderByDescending(s => s.Cost);
+                    break;
+                case "manufact_desc":
+                    products = products.OrderByDescending(s => s.ManufactureName);
+                    break;
+                case "manufact":
+                    products = products.OrderBy(s => s.ManufactureName);
+                    break;
+                default:
+                    products = products.OrderBy(s => s.AiPartNumber);
+                    break;
+            }
+            return View(await products.AsNoTracking().ToListAsync());
         }
 
         // GET: AppProducts/Details/5
