@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MySql_Image.Data;
 using MySql_Image.Data.Entities;
+using MySql_Image.Services;
 
 namespace MySql_Image.Controllers
 {
@@ -20,11 +21,22 @@ namespace MySql_Image.Controllers
         }
 
         // GET: AppProducts?sortOrder=cost_desc
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["AiPartNumberSortParm"] = String.IsNullOrEmpty(sortOrder) ? "num_desc" : "";
             ViewData["CostSortParm"] = sortOrder == "cost" ? "cost_desc" : "cost";
             ViewData["ManufactureNameSortParm"] = sortOrder == "manufact" ? "manufact_desc" : "manufact";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             ViewData["CurrentFilter"] = searchString;
 
             var products = from p in _context.Products select p;
@@ -32,7 +44,7 @@ namespace MySql_Image.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.ProductDescription.Contains(searchString)
-                                       || s.ManufactureName .Contains(searchString));
+                                       || s.ManufactureName.Contains(searchString));
             }
 
             switch (sortOrder)
@@ -56,7 +68,9 @@ namespace MySql_Image.Controllers
                     products = products.OrderBy(s => s.AiPartNumber);
                     break;
             }
-            return View(await products.AsNoTracking().ToListAsync());
+
+            int pageSize = 3;
+            return View(await PaginatedList<Product>.CreateAsync(products.AsNoTracking(), page ?? 1, pageSize));
         }
 
         // GET: AppProducts/Details/5

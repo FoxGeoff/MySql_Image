@@ -64,6 +64,9 @@ https://stackoverflow.com/questions/17952514/mvc-how-to-display-a-byte-array-ima
 
 ASP.NET MVC - Displaying Images using Custom Html Helper Method (TODO):
 http://www.devcurry.com/2012/10/aspnet-mvc-displaying-images-using.html
+
+ASP.NET MVC - Sort, filter and page table results:
+https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page
 =====================
 TODO
 =====================
@@ -73,8 +76,8 @@ Add.Email
 Add save to Excel
 Add Angular front end (BIG)
 Add Product table				DONE 4/8/18
-Product API filter by 3 ways
-Table paging and paginating		WIP
+Product API filter				DONE 4/9/18
+Table paging and paginating		DONE 4/9/18
 =====================
 
 

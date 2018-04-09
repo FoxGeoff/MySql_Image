@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MySql_Image.Data.Entities.Product>
+﻿@model MySql_Image.Services.PaginatedList<MySql_Image.Data.Entities.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -22,25 +22,24 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
+                Product Description
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["AiPartNumberSortParm"]">@Html.DisplayNameFor(model => model.AiPartNumber)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AiPartNumberSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">AI Part Number</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ManufactureNumber)
+                Manufacture Number
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ManufactureNameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Manufacture's Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["ManufactureNameSortParm"]">@Html.DisplayNameFor(model => model.ManufactureName)</a>
+                Primary Vendor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrimaryVendor)
+                 Retail
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Retail)
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CostSortParm"]">@Html.DisplayNameFor(model => model.Cost)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CostSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Cost</a>
             </th>
             <th></th>
         </tr>
@@ -71,7 +70,7 @@
                     @Html.DisplayFor(modelItem => item.Cost)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id"class="btn-sm btn-outline-warning">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-sm btn-outline-warning">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn-sm btn-outline-info">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn-sm btn-outline-danger">Delete</a>
                 </td>
@@ -79,3 +78,23 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-info @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-warning @nextDisabled">
+    Next
+</a>
