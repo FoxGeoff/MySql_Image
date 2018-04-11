@@ -44,7 +44,7 @@ namespace MySql_Image.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.ProductDescription.Contains(searchString)
-                                       || s.ManufactureName.Contains(searchString));
+                                       || s.ManufactureName.Contains(searchString) || s.AiPartNumber.Contains(searchString));
             }
 
             switch (sortOrder)

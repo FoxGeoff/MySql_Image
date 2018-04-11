@@ -1,0 +1,19 @@
+﻿@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+
+/* my styles */
+menu li {
+    display: inline;
+}
+
+    menu li::after {
+        content: ' |';
+    }
+
+    menu li:last-of-type::after {
+        content: "";
+    }

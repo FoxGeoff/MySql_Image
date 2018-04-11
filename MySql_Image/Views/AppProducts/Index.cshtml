@@ -1,7 +1,7 @@
 ﻿@model MySql_Image.Services.PaginatedList<MySql_Image.Data.Entities.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product List";
 }
 
 <p>
@@ -21,6 +21,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 Product Description
             </th>
@@ -49,6 +50,9 @@
         {
             <tr>
                 <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-sm btn-outline-info">Details</a>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.ProductDescription)
                 </td>
                 <td>
@@ -71,7 +75,6 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn-sm btn-outline-warning">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-sm btn-outline-info">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn-sm btn-outline-danger">Delete</a>
                 </td>
             </tr>

@@ -67,10 +67,13 @@ http://www.devcurry.com/2012/10/aspnet-mvc-displaying-images-using.html
 
 ASP.NET MVC - Sort, filter and page table results:
 https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page
+
+Use dynamic LINQ to simplify sort selection code:
+https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/advanced?view=aspnetcore-2.1#use-dynamic-linq-to-simplify-sort-selection-code
 =====================
 TODO
 =====================
-Add Swager
+Add Swager						WIP 4/9/18
 Add Logging
 Add.Email
 Add save to Excel
@@ -78,6 +81,8 @@ Add Angular front end (BIG)
 Add Product table				DONE 4/8/18
 Product API filter				DONE 4/9/18
 Table paging and paginating		DONE 4/9/18
+Exclude json seed data files	TBD
+Deploy to Amazon or Azure		TBD
 =====================
 
 
