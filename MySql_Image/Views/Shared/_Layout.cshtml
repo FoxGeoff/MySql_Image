@@ -24,19 +24,14 @@
                                 <span class='icon-bar'></span>
                                 <span class='icon-bar'></span>
                             </button>
-                            <a class='navbar-brand' [routerLink]="['/home']">Database Administration</a>
+                            <a class='navbar-brand' asp-controller="App" asp-action="Index">Database Administration</a>
                         </div>
                         <div class='clearfix'></div>
                         <div class='navbar-collapse collapse'>
                             <ul class='nav navbar-nav'>
                                 <li><a class="btn btn-primary " asp-controller="App" asp-action="Index"><span class='glyphicon glyphicon-home'></span>Product Images</a></li>
                                 <li><a class="btn btn-primary " asp-controller="AppProducts" asp-action="Index"><span class='glyphicon glyphicon-education'></span> Product List</a></li>
-
-                                <li [routerLinkActive]="['link-active']">
-                                    <a [routerLink]="['/fetch-data']">
-                                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
-                                    </a>
-                                </li>
+                                <li><a class="btn btn-danger " href="~/swagger" target="_blank"> <span class='glyphicon glyphicon-th-list'></span> API Data</a></li>
                             </ul>
                         </div>
                     </div>
