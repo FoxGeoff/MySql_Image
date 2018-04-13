@@ -73,17 +73,38 @@ https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/advanced?view=aspnetcor
 =====================
 TODO
 =====================
-Add Swager						WIP 4/9/18
-Add Logging
-Add.Email
-Add save to Excel
-Add Angular front end (BIG)
+Add Swager						DONE 4/11/18
+Add Logging						DONE 4/13/18
+Add.Email						DONE 4/13/18
+Add save to Excel				TBD
+Add Angular front end (BIG)		TBD
 Add Product table				DONE 4/8/18
 Product API filter				DONE 4/9/18
 Table paging and paginating		DONE 4/9/18
 Exclude json seed data files	TBD
 Deploy to Amazon or Azure		TBD
+
+Mail servers:
 =====================
+Sl.No 	Mail Server 	SMTP Server( Host ) 	Port Number
+1 	Gmail 	smtp.gmail.com 	587
+2 	Outlook 	smtp.live.com 	587
+3 	Yahoo Mail 	smtp.mail.yahoo.com 	465
+4 	Yahoo Mail Plus 	plus.smtp.mail.yahoo.com 	465
+5 	Hotmail 	smtp.live.com 	465
+6 	Office365.com 	smtp.office365.com 	587
+=====================
+
+Ref#1:
+https://dotnetcoretutorials.com/2017/08/20/sending-email-net-core-2-0/
+Ref#2:
+https://docs.microsoft.com/en-us/dotnet/api/System.Net.Mail.SmtpClient?view=netframework-4.7
+Mail Server:
+https://www.mailgun.com/
+https://sendgrid.com/
+
+
+
 
 
 

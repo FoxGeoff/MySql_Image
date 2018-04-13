@@ -7,21 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MySql_Image.Data;
 using MySql_Image.Data.Entities;
+using MySql_Image.Services;
 
 namespace MySql_Image.Controllers
 {
     public class AppController : Controller
     {
+        private readonly IMailService _mail;
         private readonly ProductImageDbContext _context;
 
-        public AppController(ProductImageDbContext context)
+        public AppController(ProductImageDbContext context, IMailService mail)
         {
+            //email
+
+            _mail = mail;
             _context = context;
         }
 
         // GET: App
         public async Task<IActionResult> Index()
         {
+            _mail.SendMessage("fox.geoffrey@gmail.com", "Test from Audio Impact App", "This only a test message!");
             return View(await _context.ProductImages.ToListAsync());
         }
 

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MySql_Image.Data;
+using MySql_Image.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace MySql_Image
@@ -33,6 +34,11 @@ namespace MySql_Image
             services.AddDbContext<ProductImageDbContext>(options =>
             options.UseMySql(_dbconnect));
 
+            //Support for development real email service
+            services.AddTransient<IMailService, RealMailService>();
+            //Support for a null email service
+            // ==> services.AddTransient<IMailService, NullMailService>();
+
             services.AddTransient<ProductImageSeeder>();
 
             services.AddMvc();
@@ -49,7 +55,7 @@ namespace MySql_Image
                     Contact = new Contact
                     {
                         Name = "Geoff Fox",
-                        Email = "geoff@fox-graphics.com",
+                        Email = "DevTestOnly@outlook.com",
                         Url = "https://fox-Graphics.com"
                     },
                     License = new License
