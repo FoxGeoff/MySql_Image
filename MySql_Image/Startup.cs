@@ -31,8 +31,18 @@ namespace MySql_Image
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductImageDbContext>(options =>
-            options.UseMySql(_dbconnect));
+
+        //    if (_env.IsDevelopment())
+        //    {
+        //        services.AddDbContext<ProductImageDbContext>(options =>
+        //        options.UseMySql(_dbconnect));
+        //    }
+
+           services.AddDbContext<ProductImageDbContext>(options =>
+           options.UseMySql(_config.GetConnectionString("dbconnect")));
+
+           services.AddDbContext<ProductImageDbContext>(options =>
+           options.UseMySql(_dbconnect));
 
             //Support for development real email service
             services.AddTransient<IMailService, RealMailService>();

@@ -8,29 +8,31 @@ namespace MySql_Image.Services
     {
         public void SendMessage(string to, string subject, string body)
         {
-            try
+            using (SmtpClient SmtpServer = new SmtpClient("smtp.live.com"))
             {
-                SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
-                SmtpServer.Port = 587; // outlook
+                try
+                {
+                    SmtpServer.Port = 587; // outlook
 
-                SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("DevTestOnly@outlook.com", "AudioImpact18##");
+                    SmtpServer.UseDefaultCredentials = false;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("DevTestOnly@outlook.com", "AudioImpact18##");
 
-                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-                SmtpServer.EnableSsl = true;
+                    SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    SmtpServer.EnableSsl = true;
 
-                var mail = new MailMessage();
-                mail.From = new MailAddress("DevTestOnly@outlook.com");
-                mail.To.Add(to);
-                mail.Subject = subject;
-                mail.Body = body;
+                    var mail = new MailMessage();
+                    mail.From = new MailAddress("DevTestOnly@outlook.com");
+                    mail.To.Add(to);
+                    mail.Subject = subject;
+                    mail.Body = body;
 
-                SmtpServer.Send(mail);
-                mail = null;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Could not send e-mail. Exception caught: " + e);
+                    SmtpServer.Send(mail);
+                    mail = null;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Could not send e-mail. Exception caught: " + e);
+                }
             }
         }
     }

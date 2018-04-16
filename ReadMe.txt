@@ -70,6 +70,20 @@ https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page
 
 Use dynamic LINQ to simplify sort selection code:
 https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/advanced?view=aspnetcore-2.1#use-dynamic-linq-to-simplify-sort-selection-code
+
+Best practice async smtpclient:
+https://stackoverflow.com/questions/7276375/what-are-best-practices-for-using-smtpclient-sendasync-and-dispose-under-net-4#22471580
+
+https://stackoverflow.com/questions/4709014/using-custom-domains-with-iis-express
+https://stackoverflow.com/questions/3313616/iis-express-enable-external-request?rq=1
+https://www.hanselman.com/blog/WorkingWithSSLAtDevelopmentTimeIsEasierWithIISExpress.aspx
+VS2015
+https://stackoverflow.com/questions/4709014/using-custom-domains-with-iis-express/32744234#32744234
+http 404 error
+https://stackoverflow.com/questions/30535336/exposing-localhost-to-the-internet-via-tunneling-using-ngrok-http-error-400
+
+Configuring IISExpress:
+https://stackoverflow.com/questions/46618360/asp-net-core-2-develop-using-custom-domain-names-and-ssl-using-iisexpress
 =====================
 TODO
 =====================
