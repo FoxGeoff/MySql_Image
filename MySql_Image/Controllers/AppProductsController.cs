@@ -11,6 +11,7 @@ using MySql_Image.Services;
 
 namespace MySql_Image.Controllers
 {
+
     public class AppProductsController : Controller
     {
         private readonly ProductImageDbContext _context;
