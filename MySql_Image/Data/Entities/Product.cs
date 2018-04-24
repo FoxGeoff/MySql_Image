@@ -19,7 +19,7 @@ namespace MySql_Image.Data.Entities
         public uint? Group { get; set; }
         [Column("AssociatedScreenId")]
         public uint? Screen { get; set; }
-        [Column("AssociatedScreenId")]
+        [Column("AssociatedImageId")]
         public uint? Image { get; set; }
         [Column("AssociatedRecycleId")]
         public uint? RecycleNumber { get; set; }
@@ -49,5 +49,6 @@ namespace MySql_Image.Data.Entities
         public sbyte ExcludedDesAiNum { get; set; }
         [Column("CostVerificationBy")]
         public int CostVerification { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

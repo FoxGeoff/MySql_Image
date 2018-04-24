@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MySql_Image.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MySql_Image.Data
 {
-    public class ProductImageDbContext : DbContext
+    public class ProductImageDbContext : IdentityDbContext<ApplicationUser>
     {
         public ProductImageDbContext(DbContextOptions options): base(options)
         {

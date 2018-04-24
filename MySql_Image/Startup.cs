@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MySql_Image.Data;
+using MySql_Image.Data.Entities;
 using MySql_Image.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -25,33 +28,40 @@ namespace MySql_Image
         {
             _config = config;
             _env = env;
-            _dbconnect = _config["dbconnect"];
+            _dbconnect = _config["dbconnect3"];
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-        //    if (_env.IsDevelopment())
-        //    {
-        //        services.AddDbContext<ProductImageDbContext>(options =>
-        //        options.UseMySql(_dbconnect));
-        //    }
+            if (_env.IsDevelopment())
+            {
+                /* Alternative: for connection string from config.json (not a sercure configuraion)
+                services.AddDbContext<ProductImageDbContext>(options =>
+                options.UseMySql(_config.GetConnectionString("dbconnect"))); */
 
-           services.AddDbContext<ProductImageDbContext>(options =>
-           options.UseMySql(_config.GetConnectionString("dbconnect")));
+                services.AddDbContext<ProductImageDbContext>(options =>
+                options.UseMySql(_dbconnect));
+            }
 
-           services.AddDbContext<ProductImageDbContext>(options =>
-           options.UseMySql(_dbconnect));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ProductImageDbContext>()
+                .AddDefaultTokenProviders();
 
-            //Support for development real email service
-            services.AddTransient<IMailService, RealMailService>();
-            //Support for a null email service
-            // ==> services.AddTransient<IMailService, NullMailService>();
+            services.AddAuthorization(config => {
+                config.AddPolicy("CanadiansOnly", policy => policy.RequireClaim(ClaimTypes.Country, "Canada"));
+                config.AddPolicy("CanadianOrAdmin", policy => policy.AddRequirements(new CanadianRequirement()));
+            });
 
             services.AddTransient<ProductImageSeeder>();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeFolder("/Account/Manage");
+                    options.Conventions.AuthorizePage("/Account/Logout");
+                });
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -75,14 +85,25 @@ namespace MySql_Image
                     }
                 });
             });
+
+            //Support for development real email service
+            services.AddTransient<IMailService, RealMailService>();
+            /* Alternative: for a null email service 
+            services.AddTransient<IMailService, NullMailService>(); */
+
+            //TODO: Register no-op EmailSender used by account confirmation and password reset during development
+            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
+            //==> services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             if (_env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -90,6 +111,7 @@ namespace MySql_Image
             }
 
             app.UseStaticFiles();
+
             /* http://localhost:50254/swagger/ */
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -100,6 +122,13 @@ namespace MySql_Image
                 //c.RoutePrefix = string.Empty;
             });
 
+            app.UseAuthentication();
+
+            /* We may have to calling it sync because async Configure() method was reported to have issues */
+            SampleData.InitializeData(app.ApplicationServices, loggerFactory).Wait();
+
+            /* await SampleData.InitializeData(app.ApplicationServices, loggerFactory); */
+
             app.UseMvc(route =>
             {
                 route.MapRoute("Default",
@@ -107,14 +136,18 @@ namespace MySql_Image
                 new { controller = "App", Action = "Index" });
             });
 
-            if (_env.IsDevelopment())
-            {
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
-                    seeder.Seed();
-                }
-            }
+            //TODO: remove
+            ////if (_env.IsDevelopment())
+            ////{
+            ////    using (var scope = app.ApplicationServices.CreateScope())
+            ////    {
+            ////        if (context.Database != null)
+            ////        {
+            ////            var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
+            ////            seeder.Seed();
+            ////        }
+            ////    }
+            ////}
         }
     }
 }

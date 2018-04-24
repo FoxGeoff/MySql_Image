@@ -23,6 +23,7 @@ namespace MySql_Image.Data
 
         public void Seed()
         {
+
             if (!_context.ProductImages.Any())
             {
                 var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_images_mod.json");

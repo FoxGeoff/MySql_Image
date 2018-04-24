@@ -1,5 +1,5 @@
 ﻿{
   "ConnectionStrings": {
-    "dbconnect": "server=localhost;userid=root;password=8ReesAveRhyl##;database=TestImage;"
+    "dbconnect3": "server=localhost;userid=tbd;password=tbd;database=tbd;"
   }
 }

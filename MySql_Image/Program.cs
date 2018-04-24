@@ -25,8 +25,10 @@ namespace MySql_Image
 
         private static void SetupConfiguration(WebHostBuilderContext context, IConfigurationBuilder builder)
         {
+            /* Uncomment these two lines for connection string from config.json (not a sercure configuraion) */
             builder.Sources.Clear();
             builder.AddJsonFile("config.json", false, true);
+            builder.AddUserSecrets("3ce4f055-2547-4b62-a51e-5c49dd0e20a3");
         }
     }
 }
