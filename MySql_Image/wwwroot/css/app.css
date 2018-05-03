@@ -6,6 +6,9 @@
 }
 
 /* my styles */
+menu {
+    margin-left: -80px;
+}
 menu li {
     display: inline;
 }
