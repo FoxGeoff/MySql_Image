@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>3ce4f055-2547-4b62-a51e-5c49dd0e20a3</UserSecretsId>
+    <ApplicationIcon />
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\dist\" />
   </ItemGroup>
 

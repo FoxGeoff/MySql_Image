@@ -14,7 +14,6 @@
     <div class='container-fluid'>
         <div class='row'>
             <div class='col-sm-3'>
-
                 <div class='main-nav'>
                     <div class='navbar navbar-inverse'>
                         <div class='navbar-header'>
@@ -24,7 +23,7 @@
                                 <span class='icon-bar'></span>
                                 <span class='icon-bar'></span>
                             </button>
-                            <a class='navbar-brand' asp-controller="App" asp-action="Index">Database Administration</a>
+                            <a class='navbar-brand' asp-area="" asp-controller="Home" asp-action="Index">Database Administration</a>
                         </div>
                         <div class='clearfix'></div>
                         <div class='navbar-collapse collapse'>
@@ -38,32 +37,38 @@
                 </div>
             </div>
 
-            <div class='col-sm-9 body-content'>
-                <menu>
-                    <ul>
-                        <li><a asp-controller="App" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="App" asp-action="About">About</a></li>
-                        <li><a asp-controller="App" asp-action="Contact">Contact Us</a></li>
-                    </ul>
-                </menu>
-                <header>
-                    <h6 style="text-align:right">Alpha V1.1.</h6>
-                </header>
-                <section>
-                    <h2>@ViewBag.Title</h2>
-                    @RenderBody()
-                </section>
-                <footer>(c) 2018 fox-graphics.com</footer>
+<div class="col-sm-9 container body-content">
+    <menu>
+        <ul>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+        </ul>
+        @await Html.PartialAsync("_LoginPartial")
+    </menu>
+    <header>
+         <h2>@ViewBag.Title</h2>
+    </header>
+    <section>
+        @RenderBody()
+        <footer>
+            <hr />
+            <p> 
+                &copy; 2018 - fox-graphics.com
+                <h6 style="text-align:right">Alpha V1.1.</h6>
+            </p>
+        </footer>
+    </section>
+    <!-- TODO: add enviroment-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/index.js"></script>
 
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                <script src="~/js/index.js"></script>
-                 
-                <script src="~/dist/vendor.js"></script>
+    <script src="~/dist/vendor.js"></script>
 
 
-                @RenderSection("scripts", false)
-            </div>
+    @RenderSection("scripts", false)
+</div>
         </div>
     </div>
 </body>

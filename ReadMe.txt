@@ -91,12 +91,13 @@ Add Swager						DONE 4/11/18
 Add Logging						DONE 4/13/18
 Add.Email						DONE 4/13/18
 Add save to Excel				TBD
-Add Angular front end (BIG)		TBD
+Add Angular front end (major)	TBD
 Add Product table				DONE 4/8/18
 Product API filter				DONE 4/9/18
 Table paging and paginating		DONE 4/9/18
 Exclude json seed data files	TBD
 Deploy to Amazon or Azure		TBD
+Authentication/Authorization	WIP 4/24/2018
 
 Mail servers:
 =====================
@@ -116,6 +117,9 @@ https://docs.microsoft.com/en-us/dotnet/api/System.Net.Mail.SmtpClient?view=netf
 Mail Server:
 https://www.mailgun.com/
 https://sendgrid.com/
+
+Authentication/Authorization:
+https://mva.microsoft.com/en-US/training-courses/aspnet-core-intermediate-18154?l=akjwE4beE_7211787171
 
 
 

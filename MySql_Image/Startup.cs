@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using MySql.Services;
 using MySql_Image.Data;
 using MySql_Image.Data.Entities;
 using MySql_Image.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Security.Claims;
 
 namespace MySql_Image
 {
@@ -45,7 +41,10 @@ namespace MySql_Image
                 options.UseMySql(_dbconnect));
             }
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+            })
                 .AddEntityFrameworkStores<ProductImageDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -86,6 +85,10 @@ namespace MySql_Image
                 });
             });
 
+
+            //Todo: combine the two: IEmailSender and IMailService
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
             //Support for development real email service
             services.AddTransient<IMailService, RealMailService>();
             /* Alternative: for a null email service 
@@ -124,30 +127,15 @@ namespace MySql_Image
 
             app.UseAuthentication();
 
-            /* We may have to calling it sync because async Configure() method was reported to have issues */
+            /* We have to call it sync because async Configure() method is reported to have issues */
             SampleData.InitializeData(app.ApplicationServices, loggerFactory).Wait();
-
-            /* await SampleData.InitializeData(app.ApplicationServices, loggerFactory); */
 
             app.UseMvc(route =>
             {
                 route.MapRoute("Default",
                 "{controller}/{action}/{id?}",
-                new { controller = "App", Action = "Index" });
+                new { controller = "Home", Action = "Index" });
             });
-
-            //TODO: remove
-            ////if (_env.IsDevelopment())
-            ////{
-            ////    using (var scope = app.ApplicationServices.CreateScope())
-            ////    {
-            ////        if (context.Database != null)
-            ////        {
-            ////            var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
-            ////            seeder.Seed();
-            ////        }
-            ////    }
-            ////}
         }
     }
 }
