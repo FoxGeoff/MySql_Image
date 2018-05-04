@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,9 +26,11 @@ namespace MySql_Image.Controllers
         }
 
         // GET: App
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            _mail.SendMessage("fox.geoffrey@gmail.com", "Test from Audio Impact App", "This only a test message!");
+            //TODO: working BUT account saw this as juck mail! Make async it is blocking the page
+            //_mail.SendMessage("fox.geoffrey@gmail.com", "Test from Audio Impact App", "This only a test message!");
             return View(await _context.ProductImages.ToListAsync());
         }
 
