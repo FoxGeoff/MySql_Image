@@ -121,6 +121,12 @@ https://sendgrid.com/
 Authentication/Authorization:
 https://mva.microsoft.com/en-US/training-courses/aspnet-core-intermediate-18154?l=akjwE4beE_7211787171
 
+EntityFramework CodeFirst Mapping to have camel case in the database:
+https://stackoverflow.com/questions/16563267/entityframework-codefirst-mapping-to-have-camel-case-in-the-database#16563821
+
+EF Camel Case to Snake Case:
+https://andrewlock.net/customising-asp-net-core-identity-ef-core-naming-conventions-for-postgresql/
+
 
 
 
