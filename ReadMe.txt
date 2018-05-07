@@ -128,22 +128,6 @@ EF Camel Case to Snake Case:
 https://andrewlock.net/customising-asp-net-core-identity-ef-core-naming-conventions-for-postgresql/
 
 
-launchSettings.json:
-
-{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://ac2f59c3",
-      "sslPort": 0
-    }
-  },
-
-  Can not connect to IISExpress:
-  https://nzpcmad.blogspot.com/2017/10/visual-studio-unable-to-connect-to-web.html
-
-
 
 
 
