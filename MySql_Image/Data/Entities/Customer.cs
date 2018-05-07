@@ -46,10 +46,11 @@ namespace MySql_Image.Data.Entities
         public byte IsNotExportedContact { get; set; }
         public byte IsRegisteredToC4 { get; set; }
         public string SmallNote { get; set; }
-        //public DateTime DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
         public string Notes { get; set; }
         public byte[] TaxIdImage { get; set; }
         public DateTimeOffset? CreatedAt { get; set; }
         public DateTimeOffset? UpdatedAt { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
